@@ -7,6 +7,7 @@ import {
   NotFoundException,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { PostsService } from './posts.service';
@@ -18,9 +19,9 @@ export class PostsController {
   constructor(private readonly postService: PostsService) {}
 
   @Get()
-  async findAll() {
+  async findAll(@Query() query: any) {
     // get all posts in the db
-    return await this.postService.findAll();
+    return await this.postService.findAll(query.page, query.pageSize);
   }
 
   @Get(':id')

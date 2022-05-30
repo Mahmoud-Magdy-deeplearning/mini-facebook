@@ -14,9 +14,11 @@ export class PostsService {
     return await this.postRepository.create<Post>({ ...post, userId });
   }
 
-  async findAll(): Promise<Post[]> {
+  async findAll(page = 1, pageSize = 5): Promise<Post[]> {
     return await this.postRepository.findAll<Post>({
       attributes: { exclude: ['userId'] },
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
     });
   }
 
