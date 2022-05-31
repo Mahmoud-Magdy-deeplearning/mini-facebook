@@ -1,7 +1,7 @@
-import { Injectable, HttpStatus, NotFoundException } from '@nestjs/common';
+import { Injectable, HttpStatus, BadRequestException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../../users/service/users.service';
 
 @Injectable()
 export class AuthService {
@@ -33,21 +33,20 @@ export class AuthService {
     return { token };
   }
 
-  public async create(user, res) {
+  public async create(user, res, i18n) {
     // hash the password
     const pass = await this.hashPassword(user.password);
-    console.log(user);
-
     // create the user
     try {
       await this.userService.create({ ...user, password: pass });
+      const msg = await i18n.t('test.REGISTER_SUCCESS');
       return res.status(HttpStatus.CREATED).send({
         status: HttpStatus.CREATED,
-        message: 'User created successfully',
+        message: msg,
       });
     } catch (err) {
-      console.log(err);
-      throw new NotFoundException('Error creating user');
+      const msg = await i18n.t('test.REGISTER_FAIL');
+      throw new BadRequestException(msg);
     }
   }
   private async generateToken(user) {

@@ -1,4 +1,4 @@
-import { Post } from './post.entity';
+import { Post } from './model/post.entity';
 import { POST_REPOSITORY } from '../../core/constants';
 
 export const postsProviders = [

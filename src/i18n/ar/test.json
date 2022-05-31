@@ -1,0 +1,13 @@
+{
+  "HELLO": "Hello",
+  "REGISTER_SUCCESS": "تم انشاء الحساب بنجاح",
+  "REGISTER_FAIL": "خطأ في انشاء الحساب",
+  "LOGIN_SUCCESS": "تم تسجيل الدخول بنجاح",
+  "LOGIN_FAIL": "خطأ في تسجيل الدخول",
+  "POST_SUCCESS": "تم انشاء المنشور بنجاح",
+  "POST_FAIL": "خطأ في انشاء المنشور",
+  "GET_POSTS_SUCCESS": "تم جلب المنشورات بنجاح",
+  "GET_POSTS_FAIL": "خطأ في جلب المنشورات",
+  "NOT_FOUND": "لا يوجد منشورات",
+  "UNAUTHORIZED": "غير مصرح لك بالدخول"
+}
