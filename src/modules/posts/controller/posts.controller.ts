@@ -9,11 +9,16 @@ import {
   Query,
   Response,
   Res,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiConsumes, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { I18n, I18nContext } from 'nestjs-i18n';
 import { PostsService } from '../service/posts.service';
+import { Helper } from '../../../core/utils/multerConfig';
 import { Post as PostEntity } from '../model/post.entity';
 import { PostDto } from '../model/dto/post.dto';
 import { PaginationQuery } from '../model/dto/pagination-query.dto';
@@ -58,14 +63,49 @@ export class PostsController {
   @Post()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: Helper.destinationPath,
+        filename: Helper.customFileName,
+      }),
+    }),
+  )
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        text: { type: 'string' },
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  // @ApiImplicitFile({ name: 'file', required: true })
   async create(
     @Body() post: PostDto,
     @Request() req,
     @I18n() i18n: I18nContext,
     @Res({ passthrough: true }) res: Response,
     @Query() languageQuery: languageSupport,
+    @UploadedFile() file,
   ): Promise<PostEntity> {
     // create a new post and return the newly created post
-    return await this.postService.create(post, req.user.id, i18n, res);
+    return await this.postService.create(
+      post,
+      req.user.id,
+      i18n,
+      res,
+      file.filename,
+    );
+  }
+
+  @Get('/img/:imgpath')
+  seeUploadedFile(@Param('imgpath') image, @Res() res) {
+    // show the uploaded file
+    return res.sendFile(image, { root: './uploads' });
   }
 }

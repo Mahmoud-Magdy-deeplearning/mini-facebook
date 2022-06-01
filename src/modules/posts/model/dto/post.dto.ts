@@ -10,4 +10,16 @@ export class PostDto {
   @IsNotEmpty()
   @MinLength(4)
   readonly text: string;
+
+  @ApiProperty({
+    type: String,
+    description: 'Image name',
+  })
+  imageName: string;
+
+  @ApiProperty({
+    type: String,
+    description: 'Image URL',
+  })
+  imageURL: string;
 }

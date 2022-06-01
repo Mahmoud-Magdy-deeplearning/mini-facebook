@@ -9,5 +9,7 @@
   "GET_POSTS_SUCCESS": "تم جلب المنشورات بنجاح",
   "GET_POSTS_FAIL": "خطأ في جلب المنشورات",
   "NOT_FOUND": "لا يوجد منشورات",
-  "UNAUTHORIZED": "غير مصرح لك بالدخول"
+  "UNAUTHORIZED": "غير مصرح لك بالدخول",
+  "FORBIDDEN": "غير مصرح لك بالتعديل",
+  "INTERNAL_SERVER_ERROR": "خطأ في السيرفر"
 }

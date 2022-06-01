@@ -16,6 +16,15 @@ export class Post extends Model<Post> {
   })
   text: string;
 
+  @Column({ allowNull: true })
+  imageName: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  imageURL: string;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,

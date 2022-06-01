@@ -39,12 +39,14 @@ export class AuthService {
     // create the user
     try {
       await this.userService.create({ ...user, password: pass });
+      // Success response
       const msg = await i18n.t('test.REGISTER_SUCCESS');
       return res.status(HttpStatus.CREATED).send({
         status: HttpStatus.CREATED,
         message: msg,
       });
     } catch (err) {
+      // Fail response
       const msg = await i18n.t('test.REGISTER_FAIL');
       throw new BadRequestException(msg);
     }

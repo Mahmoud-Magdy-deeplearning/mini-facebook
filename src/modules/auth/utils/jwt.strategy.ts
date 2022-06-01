@@ -13,7 +13,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: process.env.JWTKEY,
     });
   }
-
+  // Authorize the user by verifying the JWT token
   async validate(payload: any, i18n) {
     // check if user in the token actually exist
     const user = await this.userService.findOneById(payload.id);
