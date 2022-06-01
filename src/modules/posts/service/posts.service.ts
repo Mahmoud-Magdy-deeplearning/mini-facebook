@@ -17,9 +17,10 @@ export class PostsService {
 
   async create(post: PostDto, userId, i18n, res, fileName): Promise<Post> {
     try {
-      post.imageName = fileName;
-      post.imageURL = process.env.IMG_PATH + fileName;
-
+      if (fileName) {
+        post.imageName = fileName;
+        post.imageURL = process.env.IMG_PATH + fileName;
+      }
       // create post
       await this.postRepository.create<Post>({ ...post, userId });
       const msg = await i18n.t('test.POST_SUCCESS');

@@ -21,7 +21,7 @@ export class Post extends Model<Post> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   imageURL: string;
 

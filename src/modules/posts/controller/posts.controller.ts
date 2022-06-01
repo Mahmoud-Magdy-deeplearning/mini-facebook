@@ -93,13 +93,15 @@ export class PostsController {
     @Query() languageQuery: languageSupport,
     @UploadedFile() file,
   ): Promise<PostEntity> {
+    let fileName = null;
+    if (file) fileName = file.filename;
     // create a new post and return the newly created post
     return await this.postService.create(
       post,
       req.user.id,
       i18n,
       res,
-      file.filename,
+      fileName,
     );
   }
 
