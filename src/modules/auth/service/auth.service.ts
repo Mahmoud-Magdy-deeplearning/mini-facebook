@@ -47,7 +47,8 @@ export class AuthService {
       });
     } catch (err) {
       // Fail response
-      const msg = await i18n.t('test.REGISTER_FAIL');
+      let msg = await i18n.t('test.REGISTER_FAIL');
+      msg += ' - user name already exist or something went wrong';
       throw new BadRequestException(msg);
     }
   }

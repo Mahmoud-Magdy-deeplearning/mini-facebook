@@ -1,0 +1,12 @@
+{
+  "HELLO": "Hello",
+  "REGISTER_SUCCESS": "User created successfully",
+  "REGISTER_FAIL": "Error creating user",
+  "LOGIN_SUCCESS": "Login success",
+  "LOGIN_FAIL": "Login fail",
+  "POST_SUCCESS": "Post created successfully",
+  "POST_FAIL": "Error creating post",
+  "GET_POSTS_SUCCESS": "Posts fetched successfully",
+  "GET_POSTS_FAIL": "Error fetching posts",
+  "UNAUTHORIZED": "Unauthorized"
+}
