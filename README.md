@@ -5,6 +5,10 @@
 Mini facebook app
 </h1>
 
+
+https://user-images.githubusercontent.com/59231851/171345222-f375a9ad-ed90-4cab-a3e9-0ad9d685b628.mp4
+
+
 ### Features
 - Authentication & Authorization
 - Protected routes
