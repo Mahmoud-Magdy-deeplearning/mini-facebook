@@ -26,6 +26,9 @@ https://user-images.githubusercontent.com/59231851/171345222-f375a9ad-ed90-4cab-
 - [Swagger](https://swagger.io/)
 - [i18n](https://nestjs-i18n.com/)
 
+
+### Swagger
+you can access swagger and documentation after installation using this link http://localhost:3000/api/v1/#/
 ### Download Repository
 
 ```sh
