@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "001c1418-ff2b-477b-bdbb-a251ffbe59fd",
+		"name": "Mini Facebook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19674910"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"m7md\",\n    \"email\":\"wtf@gmail.com\",\n    \"password\":\"admin123\",\n    \"gender\":\"male\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log in",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6ImFzZGFzZCIsImVtYWlsIjoiYmxhZGFzZGlAZ21haWwuY29tIiwiZ2VuZGVyIjoibWFsZSIsInVwZGF0ZWRBdCI6IjIwMjItMDUtMjlUMjE6MzM6NDkuNDQ1WiIsImNyZWF0ZWRBdCI6IjIwMjItMDUtMjlUMjE6MzM6NDkuNDQ1WiIsImlhdCI6MTY1Mzg2MDAzMCwiZXhwIjoxNjUzOTAzMjMwfQ.iRCvWE2a9cjWAEUz5eKnZHkY8st5ReCXKpTxq611GAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"7amid\",\n    \"password\":\"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "specific post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IjdhbWlkIiwibW9iaWxlTnVtYmVyIjoiMTIzIiwiY3JlYXRlZEF0IjoiMjAyMi0wNS0yOVQyMjozOTozMS43ODhaIiwidXBkYXRlZEF0IjoiMjAyMi0wNS0yOVQyMjozOTozMS43ODhaIiwiaWF0IjoxNjU0MDE5MzA4LCJleHAiOjE2NTQwNjI1MDh9.FC_dgX88PfrqKMbfxXRYT4ILV8Efjrrc3VS1VBO2z9s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts?lang=ar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All posts with pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts?page=3&pageSize=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3"
+						},
+						{
+							"key": "pageSize",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IjdhbWlkIiwibW9iaWxlTnVtYmVyIjoiMTIzIiwiY3JlYXRlZEF0IjoiMjAyMi0wNS0yOVQyMjozOTozMS43ODhaIiwidXBkYXRlZEF0IjoiMjAyMi0wNS0yOVQyMjozOTozMS43ODhaIiwiaWF0IjoxNjUzOTEyMDE4LCJleHAiOjE2NTM5NTUyMTh9.kbdZYckUXDmLxcu3uAtMmkk7ogenerF0KIG28TD4nk0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "text",
+							"value": "leh ",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
